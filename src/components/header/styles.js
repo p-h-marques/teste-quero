@@ -9,6 +9,30 @@ export const HeaderStyles = styled.header`
     color: ${colors.bluePrimary};
     font-weight: bold;
 
+    @media (max-width: 1199px){
+        padding: 16px;
+    }
+
+    p.label{
+        span{
+            display: inline;
+        }
+
+        span + span {
+            display: none;
+        }
+
+        @media (max-width: 991px){
+            span{
+                display: none;
+            }
+
+            span + span {
+                display: inline;
+            }
+        }
+    }
+
     div.infos {
         display: flex;
         flex-direction: row;
@@ -19,9 +43,23 @@ export const HeaderStyles = styled.header`
             display: flex;
             flex-direction: row;
             align-items: center;
+            margin-right: 24px;
+            padding-right: 24px;
+            border-right: 2px solid ${colors.graySecondary};
+
+            @media (max-width: 991px){
+                flex-direction: column;
+                margin-right: 15px;
+                padding-right: 15px;
+            }
 
             p {
                 margin-left: 8px;
+
+                @media (max-width: 991px){
+                    margin-left: 0px;
+                    margin-top: 5px;
+                }
             }
         }
 
@@ -29,9 +67,10 @@ export const HeaderStyles = styled.header`
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin-left: 24px;
-            padding-left: 24px;
-            border-left: 2px solid ${colors.graySecondary};
+
+            @media (max-width: 991px){
+                display: none;
+            }
 
             div.number {
                 margin-left: 9px;
@@ -53,16 +92,33 @@ export const HeaderStyles = styled.header`
         }
     }
 
-    div.user {
+    div.users {
         flex-grow: 1;
         flex-basis: 0;
         display: flex;
-        /* flex-direction: row-reverse; */
         align-items: center;
         justify-content: flex-end;
 
-        p {
-            margin-right: 8px;
+        div.user{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            @media (max-width: 991px){
+                flex-direction: column-reverse;
+                margin-left: 15px;
+                padding-left: 15px;
+                border-left: 2px solid ${colors.graySecondary};
+            }
+
+            p {
+                margin-right: 8px;
+
+                @media (max-width: 991px){
+                    margin-right: 0px;
+                    margin-top: 5px;
+                }
+            }
         }
     }
 `

@@ -12,7 +12,10 @@ const Header = () => {
             <div className="infos">
                 <div className="info">
                     <FontAwesomeIcon icon={faInfoCircle} style={{fontSize: '24px'}}/>
-                    <p>Como funciona</p>
+                    <p className="label">
+                        <span>Como funciona</span>
+                        <span>Ajuda</span>
+                    </p>
                 </div>
                 <div className="whatsapp">
                     <div>
@@ -29,9 +32,14 @@ const Header = () => {
                 <img src={ImgQuero} alt="Quero Bolsa" />
             </div>
 
-            <div className="user">
-                <p>Nome Sobrenome</p>
-                <FontAwesomeIcon icon={faUserCircle} style={{fontSize: '24px'}}/>
+            <div className="users">
+                <div className="user">
+                    <p className="label">
+                        <span>Nome Sobrenome</span>
+                        <span>Conta</span>
+                    </p>
+                    <FontAwesomeIcon icon={faUserCircle} style={{fontSize: '24px'}}/>
+                </div>
             </div>
         </HeaderStyles>
     )
