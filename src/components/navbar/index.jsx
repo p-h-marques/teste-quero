@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { NavbarStyles } from './styles'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,10 +17,6 @@ const Navbar = () => {
     ]
 
     const [isMenuExpanded, setIsMenuExpanded] = useState(false)
-
-    useEffect(() => {
-        console.log(isMenuExpanded)
-    }, [isMenuExpanded])
 
     return (
         <NavbarStyles isMenuExpanded={isMenuExpanded}>
