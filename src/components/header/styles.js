@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
+import measures from '../../styles/measures'
 
 export const HeaderStyles = styled.header`
     display: flex;
     flex-direction: row;
     height: 80px;
-    padding: 16px 113px;
+    padding: 16px ${measures.paddingDesktop};
     color: ${colors.bluePrimary};
     font-weight: bold;
 
     @media (max-width: 1199px){
-        padding: 16px;
+        padding: 16px ${measures.paddingMobile};
     }
 
     p.label{
