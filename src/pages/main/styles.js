@@ -26,5 +26,12 @@ export const MainStyles = styled.div`
         p {
             line-height: 24px;
         }
+
+        div.cards{
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
     }
 `

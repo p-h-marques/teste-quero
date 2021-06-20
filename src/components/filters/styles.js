@@ -1,16 +1,13 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
-import measures from '../../styles/measures'
 
 export const FiltersStyles = styled.div`
-    padding: 0px ${measures.paddingDesktop};
     margin-top: 47px;
     display: flex;
     font-weight: bold;
     color: ${colors.bluePrimary};
 
     @media(max-width: 1199px){
-        padding: 0px ${measures.paddingMobile};
         margin-top: 39px;
         flex-direction: column;
         text-align: center;

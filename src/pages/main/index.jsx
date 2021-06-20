@@ -5,6 +5,7 @@ import Header from '../../components/header'
 import Navbar from '../../components/navbar'
 import Breadcrumbs from '../../components/breadcrumbs'
 import Filters from '../../components/filters'
+import CardAdd from '../../components/cardAdd'
 
 const Main = () => {
     return (
@@ -19,11 +20,13 @@ const Main = () => {
                     Adicione bolsas de cursos e faculdades do seu interesse e
                     receba atualizações com as melhores ofertas disponíveis.
                 </p>
+
+                <Filters />
+
+                <div className="cards">
+                    <CardAdd />
+                </div>
             </main>
-
-            <Filters />
-
-
         </MainStyles>
     )
 }
