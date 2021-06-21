@@ -5,6 +5,7 @@ import measures from '../../styles/measures'
 export const MainStyles = styled.div`
     main{
         margin-top: 36px;
+        margin-bottom: 120px;
         color: ${colors.black};
         padding: 0px ${measures.paddingDesktop};
 

@@ -7,6 +7,7 @@ import Breadcrumbs from '../../components/breadcrumbs'
 import Filters from '../../components/filters'
 import CardAdd from '../../components/cardAdd'
 import CardCourse from '../../components/cardCourse'
+import Footer from '../../components/footer'
 
 const Main = () => {
     return (
@@ -33,6 +34,8 @@ const Main = () => {
                     <CardCourse />
                 </div>
             </main>
+
+            <Footer />
         </MainStyles>
     )
 }
