@@ -6,6 +6,7 @@ import Navbar from '../../components/navbar'
 import Breadcrumbs from '../../components/breadcrumbs'
 import Filters from '../../components/filters'
 import CardAdd from '../../components/cardAdd'
+import CardCourse from '../../components/cardCourse'
 
 const Main = () => {
     return (
@@ -25,6 +26,11 @@ const Main = () => {
 
                 <div className="cards">
                     <CardAdd />
+                    <CardCourse />
+                    <CardCourse />
+                    <CardCourse />
+                    <CardCourse />
+                    <CardCourse />
                 </div>
             </main>
         </MainStyles>

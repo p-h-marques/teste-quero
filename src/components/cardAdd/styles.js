@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import colors from '../../styles/colors'
 
 export const CardAddStyles = styled.div`
-    padding: 20px;
-    height: 420px;
+    padding: 40px;
+    height: 100%;
+    min-height: 420px;
     text-align: center;
     display: flex;
     flex-direction: column;
