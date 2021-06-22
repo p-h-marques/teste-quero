@@ -8,6 +8,7 @@ import Filters from '../../components/filters'
 import CardAdd from '../../components/cardAdd'
 import CardCourse from '../../components/cardCourse'
 import Footer from '../../components/footer'
+import Modal from '../../components/modal'
 
 const Main = () => {
     return (
@@ -36,6 +37,7 @@ const Main = () => {
             </main>
 
             <Footer />
+            <Modal />
         </MainStyles>
     )
 }

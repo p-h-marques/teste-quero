@@ -7,6 +7,7 @@ const colors = {
     black: '#1F2D30',
     grayPrimary: '#FBFBFB',
     graySecondary: '#EDEFEF',
+    grayOutline: '#CBCDCE',
     overlay: 'rgba(31, 45, 48, 0.88)'
 }
 
