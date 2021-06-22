@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext, useEffect }  from 'react'
 import { MainStyles } from './styles'
+
+import Context from '../../state/Context'
 
 import Header from '../../components/header'
 import Navbar from '../../components/navbar'
@@ -11,6 +13,12 @@ import Footer from '../../components/footer'
 import Modal from '../../components/modal'
 
 const Main = () => {
+    const { state } = useContext(Context)
+
+    useEffect(()=>{
+        console.log(state)
+    }, [state])
+
     return (
         <MainStyles>
             <Header />
