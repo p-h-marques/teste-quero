@@ -4,7 +4,6 @@ import { FooterContactStyles } from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const FooterContact = ({logo, title, description, compact, count}) => {
-    console.log(count)
     return (
         <FooterContactStyles className={count === 0 ? 'first' : null}>
             <div className="logo">

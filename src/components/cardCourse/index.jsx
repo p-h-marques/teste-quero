@@ -2,6 +2,8 @@ import React from 'react'
 import { CardCourseStyles } from './styles'
 import ReactStars from 'react-rating-stars-component'
 
+import Button from '../button'
+
 const CardCourse = () => {
     const rating = {
         size: 20,
@@ -39,8 +41,8 @@ const CardCourse = () => {
             </div>
 
             <div className="actions">
-                <button className="primary">Excluir</button>
-                <button className="secondary">Ver oferta</button>
+                <Button className="secondary" label="Excluir" />
+                <Button className="primary" label="Ver oferta" />
             </div>
         </CardCourseStyles>
     )

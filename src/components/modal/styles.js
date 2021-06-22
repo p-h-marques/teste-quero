@@ -15,11 +15,18 @@ export const ModalStyles = styled.aside`
     justify-content: center;
     padding: 184px 0px;
 
-    div.container {
+    div.overflow{
+        overflow-y: auto;
+        max-height: calc(100vh - 100px);
+        max-width: 100vw;
         width: 750px;
+    }
+
+    div.container {
+        margin-top: 30px;
         background-color: white;
-        padding: 46px 40px 40px 40px;
         position: relative;
+        padding: 46px 40px 40px 40px;
 
         div.exit {
             position: absolute;
@@ -163,6 +170,56 @@ export const ModalStyles = styled.aside`
                 input[type='range']:focus::-ms-fill-upper {
                     background: ${colors.bluePrimary};
                 }
+            }
+        }
+
+        div.results{
+            margin-top: 46px;
+
+            div.order{
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                padding-bottom: 23px;
+                border-bottom: 2px solid ${colors.graySecondary};
+
+                div.select{
+                    display: flex;
+                    align-items: flex-end;
+
+                    @media(max-width: 575px){
+                        flex-direction: column;
+
+                        div + div {
+                            margin-top: 10px;
+                        }
+                    }
+
+                    div + div{
+                        color: ${colors.bluePrimary};
+                        cursor: pointer;
+
+                        svg{
+                            margin-left: 9px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        div.actions{
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: stretch;
+
+            @media(max-width: 575px){
+                justify-content: center;
+            }
+
+            div + div {
+                margin-left: 8px;
             }
         }
     }

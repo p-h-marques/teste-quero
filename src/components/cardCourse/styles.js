@@ -100,35 +100,8 @@ export const CardCourseStyles = styled.div`
     }
 
     div.actions{
-        button{
-            font-size: 16px;
-            line-height: 16px;
-            font-weight: bold;
-            padding: 9px 18px;
-            border-radius: 3px;
-            border: 1px solid;
-            cursor: pointer;
-
-            &.primary{
-                color: ${colors.bluePrimary};
-                border-color: ${colors.bluePrimary};
-                background-color: white;
-
-                &:hover{
-                    background-color: rgba(0, 0, 0, 0.05);
-                }
-            }
-
-            &.secondary{
-                color: ${colors.black};
-                border-color: ${colors.yellowSecondary};
-                background-color: ${colors.yellowPrimary};
-                margin-left: 8px;
-
-                &:hover{
-                    background-color: ${colors.yellowSecondary};
-                }
-            }
+        button + button {
+            margin-left: 8px;
         }
     }
 `
