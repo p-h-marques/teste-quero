@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ModalActionsStyles = styled.aside`
+export const ModalActionsStyles = styled.div`
     margin-top: 40px;
     display: flex;
     justify-content: flex-end;
