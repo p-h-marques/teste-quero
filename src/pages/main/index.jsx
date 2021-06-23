@@ -2,6 +2,8 @@ import React, { useContext, useEffect }  from 'react'
 import { MainStyles } from './styles'
 
 import Context from '../../state/Context'
+import * as actions from '../../state/actions'
+import {getData} from '../../utils/functions'
 
 import Header from '../../components/header'
 import Navbar from '../../components/navbar'
@@ -13,7 +15,12 @@ import Footer from '../../components/footer'
 import Modal from '../../components/modal'
 
 const Main = () => {
-    const { state } = useContext(Context)
+    const { state, dispatch } = useContext(Context)
+
+    useEffect(async ()=>{
+        const data = await getData()
+        dispatch(actions.fetchData(data))
+    }, [])
 
     useEffect(()=>{
         console.log(state)

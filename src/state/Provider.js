@@ -18,7 +18,8 @@ export const initialState = {
             },
             max: 10000
         }
-    }
+    },
+    data: []
 }
 
 

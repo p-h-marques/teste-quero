@@ -7,6 +7,7 @@ export const ResultStyles = styled.div`
     align-items: center;
     padding: 10px 0px;
     border-bottom: 2px solid ${colors.graySecondary};
+    max-height: 80px;
 
     div.checkbox{
         margin-right: 32px;
@@ -32,7 +33,9 @@ export const ResultStyles = styled.div`
 
         img{
             /* height: 60px; */
-            width: 100%;
+            /* width: 100%; */
+            max-width: 106px;
+            max-height: 60px;
         }
     }
 

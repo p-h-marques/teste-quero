@@ -38,6 +38,24 @@ function reducer(state, action) {
                 },
             }
 
+        case types.FETCH_DATA:
+            return {
+                ...state,
+                data: action.payload,
+            }
+
+        case types.UPDATE_SELECT:
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    filters: {
+                        ...state.search.filters,
+                        [action.payload.type]: action.payload.data
+                    },
+                }
+            }
+
         default:
             throw new Error()
     }
