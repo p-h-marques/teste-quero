@@ -93,3 +93,18 @@ export function getSelectedCourses(data, all){
 
     return payload
 }
+
+export function formatingMoney(enter) {
+    let value = parseFloat(enter)
+
+    if (isNaN(value)) {
+        value = 0
+    }
+
+    let newvalue = value.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    })
+
+    return newvalue
+}

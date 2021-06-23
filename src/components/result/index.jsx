@@ -3,6 +3,7 @@ import { ResultStyles } from './styles'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
+import {formatingMoney} from '../../utils/functions'
 
 import Checkbox from '../checkbox'
 
@@ -51,7 +52,7 @@ const Result = ({ data, id }) => {
                     <p className="discount">
                         Bolsa de <span>{data.discount_percentage}%</span>
                     </p>
-                    <p className="value">R$ {data.price_with_discount}/mês</p>
+                    <p className="value">R$ {formatingMoney(data.price_with_discount)}/mês</p>
                 </div>
             </div>
         </ResultStyles>

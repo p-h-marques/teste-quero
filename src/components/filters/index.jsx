@@ -16,7 +16,7 @@ const Breadcrumbs = () => {
         },
         {
             label: '1° semestre de 2020',
-            code: '2020.01',
+            code: '2020.1',
         },
     ]
 

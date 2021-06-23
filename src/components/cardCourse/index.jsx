@@ -4,6 +4,7 @@ import ReactStars from 'react-rating-stars-component'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
+import {formatingMoney} from '../../utils/functions'
 
 import Button from '../button'
 
@@ -52,9 +53,9 @@ const CardCourse = data => {
 
             <div className="price">
                 <div className="label">Mensalidade com o Quero Bolsa:</div>
-                <div className="fullprice">R$ {data.full_price}</div>
+                <div className="fullprice">R$ {formatingMoney(data.full_price)}</div>
                 <div className="discountprice">
-                    <span className="value">R$ {data.price_with_discount}</span>
+                    <span className="value">R$ {formatingMoney(data.price_with_discount)}</span>
                     <span className="period">/mês</span>
                 </div>
             </div>
