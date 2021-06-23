@@ -3,10 +3,10 @@ import { ModalStyles } from './styles'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
-import { filterCoursesList, filterCourses, filterRangeValues } from '../../utils/functions'
+import { filterCourses } from '../../utils/functions'
 
-import Select from '../select'
-import Checkbox from '../checkbox'
+import ModalFilters from './filters'
+
 import Result from '../result'
 import Button from '../button'
 
@@ -15,10 +15,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = () => {
     const OVERLAY = 'overlay'
-    const { state, dispatch } = useContext(Context)
-    const [courses, setCourses] = useState([])
-    const [range, setRange] = useState({min: 0, max: 10000})
+
     const [filteredCourses, setFilteredCourses] = useState([])
+    const { state, dispatch } = useContext(Context)
 
     const handleModalShow = useCallback(() => {
         dispatch(actions.toogleModal(false))
@@ -35,23 +34,7 @@ const Modal = () => {
         [state, dispatch],
     )
 
-    const handleRangeChange = useCallback(
-        e => {
-            dispatch(actions.updateRange(e.target.value))
-        },
-        [state, dispatch]
-    )
-
     useEffect(() => {
-        const filteredCoursesList = filterCoursesList(state.data)
-        setCourses(filteredCoursesList)
-
-        const filteredRangeValues = filterRangeValues(state.data)
-        setRange(filteredRangeValues)
-        if(filteredRangeValues.max > 0) dispatch(actions.updateRange(filteredRangeValues.max))
-    }, [state.data])
-
-    useEffect(()=>{
         setFilteredCourses(filterCourses(state.data, state.search.filters))
     }, [state.search.filters, state.data])
 
@@ -75,76 +58,7 @@ const Modal = () => {
                         <p>Filtre e adicione as bolsas de seu interesse. </p>
                     </div>
 
-                    <div className="filters">
-                        <Select
-                            options={[
-                                'Fortaleza',
-                                'Jacareí',
-                                'São José dos Campos',
-                                'São Paulo',
-                            ]}
-                            label="SELECIONE SUA CIDADE"
-                            name="city"
-                            id="selectCity"
-                            onChange={e =>
-                                dispatch(
-                                    actions.updateSelect({
-                                        type: 'city',
-                                        data: e.target.value,
-                                    }),
-                                )
-                            }
-                        />
-
-                        <Select
-                            options={courses}
-                            label="SELECIONE O CURSO DE SUA PREFERÊNCIA"
-                            name="course"
-                            id="selectCourse"
-                            onChange={e =>
-                                dispatch(
-                                    actions.updateSelect({
-                                        type: 'course',
-                                        data: e.target.value,
-                                    }),
-                                )
-                            }
-                        />
-
-                        <div className="options">
-                            <p>COMO VOCÊ QUER ESTUDAR?</p>
-                            <div className="inputs">
-                                <Checkbox
-                                    name="kind"
-                                    value="Presencial"
-                                    label="Presencial"
-                                />
-                                <Checkbox
-                                    name="kind"
-                                    value="EaD"
-                                    label="A distância"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="slider">
-                            <p>ATÉ QUANTO PODE PAGAR?</p>
-                            <p className="value">
-                                R$ {state.search.filters.max}
-                            </p>
-                            <input
-                                type="range"
-                                name="range"
-                                id="range"
-                                min={range.min - 1}
-                                max={range.max + 1}
-                                value={state.search.filters.max}
-                                onChange={e => {
-                                    handleRangeChange(e)
-                                }}
-                            />
-                        </div>
-                    </div>
+                    <ModalFilters />
 
                     <div className="results">
                         <div className="order">
@@ -156,13 +70,9 @@ const Modal = () => {
                         </div>
 
                         <div className="courses">
-                            {
-                                filteredCourses.map((course, key) => {
-                                    return (
-                                        <Result data={course} key={key}/>
-                                    )
-                                })
-                            }
+                            {filteredCourses.map((course, key) => {
+                                return <Result data={course} key={key} />
+                            })}
                         </div>
                     </div>
 

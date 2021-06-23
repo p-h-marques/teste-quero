@@ -1,0 +1,108 @@
+import React, {useCallback, useContext, useState, useEffect} from 'react'
+import { ModalFiltersStyles } from './styles'
+
+import Context from '../../../state/Context'
+import * as actions from '../../../state/actions'
+import { filterCoursesList, filterRangeValues } from '../../../utils/functions'
+
+import Select from '../../select'
+import Checkbox from '../../checkbox'
+
+const ModalFilters = () => {
+    const [courses, setCourses] = useState([])
+    const [range, setRange]     = useState({min: 0, max: 10000})
+    const { state, dispatch }   = useContext(Context)
+
+    useEffect(() => {
+        const filteredCoursesList = filterCoursesList(state.data)
+        const filteredRangeValues = filterRangeValues(state.data)
+
+        setCourses(filteredCoursesList)
+        setRange(filteredRangeValues)
+
+        if(filteredRangeValues.max > 0)
+            dispatch(actions.updateRange(filteredRangeValues.max))
+    }, [state.data])
+
+    const handleRangeChange = useCallback(
+        e => {
+            dispatch(actions.updateRange(e.target.value))
+        },
+        [state, dispatch]
+    )
+
+    return (
+        <ModalFiltersStyles>
+            <Select
+                options={[
+                    'Fortaleza',
+                    'Jacareí',
+                    'São José dos Campos',
+                    'São Paulo',
+                ]}
+                label="SELECIONE SUA CIDADE"
+                name="city"
+                id="selectCity"
+                onChange={e =>
+                    dispatch(
+                        actions.updateSelect({
+                            type: 'city',
+                            data: e.target.value,
+                        }),
+                    )
+                }
+            />
+
+            <Select
+                options={courses}
+                label="SELECIONE O CURSO DE SUA PREFERÊNCIA"
+                name="course"
+                id="selectCourse"
+                onChange={e =>
+                    dispatch(
+                        actions.updateSelect({
+                            type: 'course',
+                            data: e.target.value,
+                        }),
+                    )
+                }
+            />
+
+            <div className="options">
+                <p>COMO VOCÊ QUER ESTUDAR?</p>
+                <div className="inputs">
+                    <Checkbox
+                        name="kind"
+                        value="Presencial"
+                        label="Presencial"
+                    />
+                    <Checkbox
+                        name="kind"
+                        value="EaD"
+                        label="A distância"
+                    />
+                </div>
+            </div>
+
+            <div className="slider">
+                <p>ATÉ QUANTO PODE PAGAR?</p>
+                <p className="value">
+                    R$ {state.search.filters.max}
+                </p>
+                <input
+                    type="range"
+                    name="range"
+                    id="range"
+                    min={range.min - 1}
+                    max={range.max + 1}
+                    value={state.search.filters.max}
+                    onChange={e => {
+                        handleRangeChange(e)
+                    }}
+                />
+            </div>
+        </ModalFiltersStyles>
+    )
+}
+
+export default ModalFilters

@@ -22,10 +22,6 @@ const Main = () => {
         dispatch(actions.fetchData(data))
     }, [])
 
-    useEffect(()=>{
-        console.log(state)
-    }, [state])
-
     return (
         <MainStyles>
             <Header />
