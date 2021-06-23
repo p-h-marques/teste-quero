@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useContext, useCallback } from 'react'
 import { ModalStyles } from './styles'
+
+import Context from '../../state/Context'
+import * as actions from '../../state/actions'
 
 import Select from '../select'
 import Checkbox from '../checkbox'
@@ -10,14 +13,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = () => {
+    const OVERLAY = 'overlay'
+    const { state, dispatch } = useContext(Context)
+
+    const handleModalShow = useCallback(() => {
+        dispatch(actions.toogleModal(false))
+    }, [state, dispatch])
+
+    const handleOutsideClick = useCallback(
+        e => {
+            const collection = e.target.children
+
+            if(collection.namedItem(OVERLAY) !== null){
+                dispatch(actions.toogleModal(false))
+            }
+        },
+        [state, dispatch],
+    )
+
+    const handleRangeChange = useCallback(e => {
+        dispatch(actions.updateRange(e.target.value))
+    }, [state, dispatch])
+
     return (
-        <ModalStyles>
-            <div className="overflow">
+        <ModalStyles
+            visible={state.search.visible}
+            onClick={e => handleOutsideClick(e)}
+        >
+            <div id={OVERLAY} className="overflow">
                 <div className="container">
                     <div className="exit">
                         <FontAwesomeIcon
                             icon={faTimes}
                             style={{ width: '26px', height: '26px' }}
+                            onClick={handleModalShow}
                         />
                     </div>
 
@@ -64,13 +93,15 @@ const Modal = () => {
 
                         <div className="slider">
                             <p>ATÉ QUANTO PODE PAGAR?</p>
-                            <p className="value">R$ 10.000</p>
+                            <p className="value">R$ {state.search.filters.max}</p>
                             <input
                                 type="range"
                                 name="range"
                                 id="range"
                                 min="0"
                                 max="10000"
+                                value={state.search.filters.max}
+                                onChange={e =>{handleRangeChange(e)}}
                             />
                         </div>
                     </div>

@@ -10,7 +10,7 @@ export const ModalStyles = styled.aside`
     background-color: ${colors.overlay};
     width: 100%;
     height: 100vh;
-    display: flex;
+    display: ${props => (props.visible ? 'flex' : 'none')};
     align-items: center;
     justify-content: center;
     padding: 184px 0px;
@@ -33,6 +33,7 @@ export const ModalStyles = styled.aside`
             top: -30px;
             right: 0px;
             color: white;
+            cursor: pointer;
         }
 
         div.header {

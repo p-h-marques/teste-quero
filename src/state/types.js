@@ -1,1 +1,4 @@
-export const SIMPLE_UPDATE = 'SIMPLE_UPDATE'
+export const TOOGLE_MODAL = 'TOOGLE_MODAL'
+export const TOOGLE_SEMESTER = 'TOOGLE_SEMESTER'
+export const UPDATE_RANGE = 'UPDATE_RANGE'
+export const UPDATE_KIND = 'UPDATE_KIND'

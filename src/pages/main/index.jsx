@@ -36,11 +36,11 @@ const Main = () => {
 
                 <div className="cards">
                     <CardAdd />
-                    <CardCourse />
-                    <CardCourse />
-                    <CardCourse />
-                    <CardCourse />
-                    <CardCourse />
+                    {
+                        state.main.courses.map((course, key) => {
+                            return (<CardCourse {...course} key={key}/>)
+                        })
+                    }
                 </div>
             </main>
 

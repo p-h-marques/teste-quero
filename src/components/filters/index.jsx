@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { FiltersStyles } from './styles'
+
+import Context from '../../state/Context'
+import * as actions from '../../state/actions'
 
 const Breadcrumbs = () => {
     const filters = [
@@ -17,7 +20,11 @@ const Breadcrumbs = () => {
         },
     ]
 
-    const [selectedFilter, setSelectedFilter] = useState(filters[0].code)
+    const { state, dispatch } = useContext(Context)
+
+    const handleSemesterChange = useCallback(semester => {
+        dispatch(actions.toogleSemester(semester))
+    }, [state, dispatch])
 
     return (
         <FiltersStyles>
@@ -25,10 +32,10 @@ const Breadcrumbs = () => {
                 return (
                     <div
                         className={
-                            selectedFilter === filter.code ? 'selected' : null
+                            state.main.filter === filter.code ? 'selected' : null
                         }
                         key={filter.code}
-                        onClick={()=>{setSelectedFilter(filter.code)}}
+                        onClick={()=>{handleSemesterChange(filter.code)}}
                     >
                         {filter.label}
                     </div>

@@ -12,6 +12,11 @@ export const CardAddStyles = styled.div`
     align-items: center;
     background-color: white;
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.03);
+    }
 
     svg{
         color: ${colors.bluePrimary};

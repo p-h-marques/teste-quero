@@ -12,7 +12,10 @@ export const initialState = {
         filters: {
             city: '',
             course: '',
-            kind: ['Presencial', 'EaD'],
+            kind: {
+                Presencial: true,
+                EaD: true
+            },
             max: 10000
         }
     }

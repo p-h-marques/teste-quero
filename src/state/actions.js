@@ -1,8 +1,29 @@
 import * as types from './types'
 
-export function simpleUpdate(params) {
+export function toogleModal(visible){
     return {
-        type: types.SIMPLE_UPDATE,
-        payload: { ...params },
+        type: types.TOOGLE_MODAL,
+        payload: visible,
+    }
+}
+
+export function toogleSemester(semester){
+    return {
+        type: types.TOOGLE_SEMESTER,
+        payload: semester,
+    }
+}
+
+export function updateRange(max){
+    return {
+        type: types.UPDATE_RANGE,
+        payload: max,
+    }
+}
+
+export function updateKind({type, status}) {
+    return {
+        type: types.UPDATE_KIND,
+        payload: { type, status },
     }
 }
