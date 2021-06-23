@@ -1,47 +1,73 @@
-import React from 'react'
+import React, { useCallback, useContext } from 'react'
 import { CardCourseStyles } from './styles'
 import ReactStars from 'react-rating-stars-component'
 
+import Context from '../../state/Context'
+// import * as actions from '../../state/actions'
+// import { getCourseId } from '../../utils/functions'
+
 import Button from '../button'
 
-const CardCourse = () => {
-    const rating = {
-        size: 20,
-        isHalf: true,
-        value: 3.8,
-        edit: false,
-    }
+const CardCourse = data => {
+    const { state, dispatch } = useContext(Context)
+
+    const handleRemoveCourse = useCallback((data) => {
+        console.log(data)
+        // const id = getCourseId(data)
+        // dispatch(actions.removeCourse(id, state.search.selected))
+    }, [state, dispatch])
+
     return (
         <CardCourseStyles>
             <div className="infos">
-                <img
-                    src="https://www.tryimg.com/u/2019/04/16/anhanguera.png"
-                    alt="Anhanguera"
-                />
-                <div className="name">ANHANGUERA</div>
-                <div className="course">Arquitetura e Urbanismo</div>
+                <div className="img">
+                    <img
+                        src={data.university.logo_url}
+                        alt={data.university.name}
+                    />
+                </div>
+                <div className="name">{data.university.name.toUpperCase()}</div>
+                <div className="course">{data.course.name}</div>
                 <div className="rating">
-                    <span className="number">3.8</span>
-                    <span className="stars"><ReactStars {...rating} /></span>
+                    <span className="number">{data.university.score}</span>
+                    <span className="stars">
+                        <ReactStars
+                            {...{
+                                size: 20,
+                                isHalf: true,
+                                value: data.university.score,
+                                edit: false,
+                            }}
+                        />
+                    </span>
                 </div>
             </div>
 
             <div className="description">
-                <div className="shift">PRESENCIAL · NOITE</div>
-                <div className="start">Início das aulas em: 05/07/2019</div>
+                <div className="shift">
+                    {data.course.kind.toUpperCase()} ·
+                    {' ' + data.course.shift.toUpperCase()}
+                </div>
+                <div className="start">
+                    Início das aulas em: {data.start_date}
+                </div>
             </div>
 
             <div className="price">
                 <div className="label">Mensalidade com o Quero Bolsa:</div>
-                <div className="fullprice">R$ 1.487,31</div>
+                <div className="fullprice">R$ {data.full_price}</div>
                 <div className="discountprice">
-                    <span className="value">R$ 453,63</span>
+                    <span className="value">R$ {data.price_with_discount}</span>
                     <span className="period">/mês</span>
                 </div>
             </div>
 
             <div className="actions">
-                <Button className="secondary" label="Excluir" />
+                <Button
+                    className="secondary"
+                    label="Excluir"
+                    onClick={() => handleRemoveCourse(data)}
+                />
                 <Button className="primary" label="Ver oferta" />
             </div>
         </CardCourseStyles>

@@ -84,7 +84,20 @@ function reducer(state, action) {
             }
 
         case types.APPLY_FILTERS:
-            console.log(action)
+            return {
+                ...state,
+                main: {
+                    ...state.main,
+                    courses: action.payload
+                },
+                search: {
+                    ...state.search,
+                    visible: false,
+                    selected: []
+                }
+            }
+
+        case types.REMOVE_COURSE:
             return {
                 ...state,
                 main: {

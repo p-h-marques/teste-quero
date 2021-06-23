@@ -64,3 +64,29 @@ export function filterCourses(data, filters) {
 
     return finalData
 }
+
+export function getCourseId(course){
+    return course.course.name +
+        ' | ' +
+        course.university.name +
+        ' | ' +
+        course.course.kind
+}
+
+export function getSelectedCourses(data, all){
+    console.log(data, all)
+    let payload = []
+
+    data.forEach(mycourse => {
+        const courseFilters = mycourse.split(' | ')
+        let allCourses = all
+
+        allCourses = allCourses.filter(allcourse => allcourse.course.name === courseFilters[0])
+        allCourses = allCourses.filter(allcourse => allcourse.university.name === courseFilters[1])
+        allCourses = allCourses.filter(allcourse => allcourse.course.kind === courseFilters[2])
+
+        payload.push(allCourses[0])
+    })
+
+    return payload
+}

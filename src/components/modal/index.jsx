@@ -3,7 +3,7 @@ import { ModalStyles } from './styles'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
-import { filterCourses } from '../../utils/functions'
+import { filterCourses, getCourseId } from '../../utils/functions'
 
 import ModalFilters from './filters'
 import ModalActions from './actions'
@@ -70,11 +70,7 @@ const Modal = () => {
 
                         <div className="courses">
                             {filteredCourses.map(course => {
-                                const id = course.course.name +
-                                    ' | ' +
-                                    course.university.name +
-                                    ' | ' +
-                                    course.course.kind
+                                const id = getCourseId(course)
 
                                 return (
                                     <Result

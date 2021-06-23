@@ -1,4 +1,5 @@
 import * as types from './types'
+import {getSelectedCourses, getCourseId} from '../utils/functions'
 
 export function toogleModal(visible){
     return {
@@ -67,22 +68,23 @@ export function cancelFilters(){
     return {type: types.CANCEL_FILTERS}
 }
 
-export function applyFilters(data, all){
-    let payload = []
-
-    data.forEach(mycourse => {
-        const courseFilters = mycourse.split(' | ')
-        let allCourses = all
-
-        allCourses = allCourses.filter(allcourse => allcourse.course.name === courseFilters[0])
-        allCourses = allCourses.filter(allcourse => allcourse.university.name === courseFilters[1])
-        allCourses = allCourses.filter(allcourse => allcourse.course.kind === courseFilters[2])
-
-        payload.push(allCourses[0])
+export function applyFilters(selected, actual, all){
+    actual.forEach(prevCourse => {
+        if(!selected.includes(getCourseId(prevCourse))) selected.push(getCourseId(prevCourse))
     })
 
     return {
         type: types.APPLY_FILTERS,
-        payload
+        payload: getSelectedCourses(selected, all)
+    }
+}
+
+export function removeCourse(id, selected){
+    const index = selected.indexOf(id)
+    if(index > -1) selected.splice(index, 1)
+
+    return {
+        type: types.REMOVE_COURSE,
+        payload: selected
     }
 }

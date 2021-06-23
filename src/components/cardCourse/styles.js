@@ -17,10 +17,16 @@ export const CardCourseStyles = styled.div`
         border-bottom: 2px solid ${colors.graySecondary};
         align-self: stretch;
 
-        img{
+        div.img{
             height: 70px;
             margin-bottom: 20px;
+
+            img{
+                max-height: 70px;
+                max-width: 100%;
+            }
         }
+
 
         div.name{
             font-size: 13px;

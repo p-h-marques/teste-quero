@@ -14,7 +14,7 @@ const ModalActions = () => {
     }, [state, dispatch])
 
     const handleApplyClick = useCallback(()=>{
-        dispatch(actions.applyFilters(state.search.selected, state.data))
+        dispatch(actions.applyFilters(state.search.selected, state.main.courses, state.data))
     }, [state, dispatch])
 
     return (
