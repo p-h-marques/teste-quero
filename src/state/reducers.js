@@ -106,6 +106,15 @@ function reducer(state, action) {
                 }
             }
 
+        case types.UPDATE_SELECTED_COURSES:
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    selected: action.payload
+                }
+            }
+
         default:
             throw new Error()
     }

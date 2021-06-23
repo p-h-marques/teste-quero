@@ -3,7 +3,7 @@ import { ModalStyles } from './styles'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
-import { filterCourses, getCourseId } from '../../utils/functions'
+import { filterCourses, getCourseId, getSelectedCourses } from '../../utils/functions'
 
 import ModalFilters from './filters'
 import ModalActions from './actions'
@@ -35,6 +35,21 @@ const Modal = () => {
 
     useEffect(() => {
         setFilteredCourses(filterCourses(state.data, state.search.filters))
+
+        verifySelectedFiltered(state.search, state.data)
+
+        function verifySelectedFiltered({selected, filters}, data){
+            const coursesSelected = getSelectedCourses(selected, data)
+            const filteredCoursesSelected = filterCourses(coursesSelected, filters)
+
+            let newSelected = []
+
+            filteredCoursesSelected.forEach(courseFiltered => {
+                newSelected.push(getCourseId(courseFiltered))
+            })
+
+            dispatch(actions.updateSelectedCourses(newSelected))
+        }
     }, [state.search.filters, state.data])
 
     return (

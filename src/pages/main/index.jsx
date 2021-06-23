@@ -22,6 +22,10 @@ const Main = () => {
         dispatch(actions.fetchData(data))
     }, [])
 
+    useEffect(()=>[
+        console.log(state.search.selected)
+    ],[state])
+
     return (
         <MainStyles>
             <Header />

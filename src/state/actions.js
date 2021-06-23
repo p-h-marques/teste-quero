@@ -91,3 +91,10 @@ export function removeCourse(course, all){
         payload: all
     }
 }
+
+export function updateSelectedCourses(list){
+    return {
+        type: types.UPDATE_SELECTED_COURSES,
+        payload: list
+    }
+}
