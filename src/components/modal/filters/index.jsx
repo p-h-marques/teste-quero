@@ -11,6 +11,7 @@ import Checkbox from '../../checkbox'
 const ModalFilters = () => {
     const [courses, setCourses] = useState([])
     const [range, setRange]     = useState({min: 0, max: 10000})
+    const [actualRange, setActualRange] = useState(10000)
     const { state, dispatch }   = useContext(Context)
 
     useEffect(() => {
@@ -20,8 +21,10 @@ const ModalFilters = () => {
         setCourses(filteredCoursesList)
         setRange(filteredRangeValues)
 
-        if(filteredRangeValues.max > 0)
+        if(filteredRangeValues.max > 0){
             dispatch(actions.updateRange(filteredRangeValues.max))
+            setActualRange(filteredRangeValues.max)
+        }
     }, [state.data])
 
     const handleRangeChange = useCallback(
@@ -30,6 +33,10 @@ const ModalFilters = () => {
         },
         [state, dispatch]
     )
+
+    useEffect(()=>{
+        console.log(state)
+    }, [state])
 
     return (
         <ModalFiltersStyles>
@@ -87,16 +94,20 @@ const ModalFilters = () => {
             <div className="slider">
                 <p>ATÉ QUANTO PODE PAGAR?</p>
                 <p className="value">
-                    R$ {state.search.filters.max}
+                    R$ {actualRange}
                 </p>
                 <input
                     type="range"
                     name="range"
                     id="range"
-                    min={range.min - 1}
-                    max={range.max + 1}
-                    value={state.search.filters.max}
+                    min={range.min}
+                    max={range.max}
+                    step={1}
+                    value={actualRange}
                     onChange={e => {
+                        setActualRange(parseInt(e.target.value))
+                    }}
+                    onMouseUp={e => {
                         handleRangeChange(e)
                     }}
                 />

@@ -7,12 +7,14 @@ export const FooterStyles = styled.footer`
     color: white;
 
     div.contacts{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
+        justify-content: space-between;
+        /* grid-template-columns: repeat(4, 1fr); */
         padding: 24px ${measures.paddingDesktop};
 
         @media(max-width: 1199px){
             padding: 0px;
+            display: grid;
             grid-template-columns: repeat(3, 1fr);
         }
     }

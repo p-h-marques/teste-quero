@@ -8,6 +8,7 @@ export const ResultStyles = styled.div`
     padding: 10px 0px;
     border-bottom: 2px solid ${colors.graySecondary};
     max-height: 80px;
+    min-height: 80px;
 
     div.checkbox{
         margin-right: 32px;

@@ -30,8 +30,8 @@ export function filterRangeValues(data){
     data.forEach(course => values.push(course.price_with_discount))
 
     return {
-        min: Math.min( ...values ),
-        max: Math.max( ...values ),
+        min: Math.floor(Math.min( ...values )),
+        max: Math.ceil(Math.max( ...values )),
     }
 }
 
