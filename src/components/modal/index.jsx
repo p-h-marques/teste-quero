@@ -6,9 +6,8 @@ import * as actions from '../../state/actions'
 import { filterCourses } from '../../utils/functions'
 
 import ModalFilters from './filters'
-
+import ModalActions from './actions'
 import Result from '../result'
-import Button from '../button'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -70,28 +69,25 @@ const Modal = () => {
                         </div>
 
                         <div className="courses">
-                            {filteredCourses.map((course, key) => {
-                                return <Result data={course} key={key} />
+                            {filteredCourses.map(course => {
+                                const id = course.course.name +
+                                    ' | ' +
+                                    course.university.name +
+                                    ' | ' +
+                                    course.course.kind
+
+                                return (
+                                    <Result
+                                        data={course}
+                                        key={id}
+                                        id={id}
+                                    />
+                                )
                             })}
                         </div>
                     </div>
 
-                    <div className="actions">
-                        <div>
-                            <Button
-                                className="secondary"
-                                label="Cancelar"
-                                padding="big"
-                            />
-                        </div>
-                        <div>
-                            <Button
-                                className="primary"
-                                label="Adicionar bolsa(s)"
-                                padding="big"
-                            />
-                        </div>
-                    </div>
+                    <ModalActions />
                 </div>
             </div>
         </ModalStyles>

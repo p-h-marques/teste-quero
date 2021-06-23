@@ -17,7 +17,8 @@ export const initialState = {
                 EaD: true
             },
             max: 10000
-        }
+        },
+        selected: []
     },
     data: []
 }

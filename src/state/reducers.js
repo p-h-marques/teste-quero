@@ -56,6 +56,43 @@ function reducer(state, action) {
                 }
             }
 
+        case types.UPDATE_FILTER_SELECTED_COURSES:
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    selected: action.payload
+                }
+            }
+
+        case types.CANCEL_FILTERS:
+            return {
+                ...state,
+                search: {
+                    filters: {
+                        city: '',
+                        course: '',
+                        kind: {
+                            Presencial: true,
+                            EaD: true
+                        },
+                        max: state.search.filters.max
+                    },
+                    selected: [],
+                    visible: false
+                }
+            }
+
+        case types.APPLY_FILTERS:
+            console.log(action)
+            return {
+                ...state,
+                main: {
+                    ...state.main,
+                    courses: action.payload
+                }
+            }
+
         default:
             throw new Error()
     }

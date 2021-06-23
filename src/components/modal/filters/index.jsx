@@ -34,6 +34,18 @@ const ModalFilters = () => {
         [state, dispatch]
     )
 
+    const handleCheckboxChange = useCallback(
+        e => {
+            dispatch(
+                actions.updateKind({
+                    type: e.target.value,
+                    status: e.target.checked,
+                }),
+            )
+        },
+        [state, dispatch],
+    )
+
     useEffect(()=>{
         console.log(state)
     }, [state])
@@ -82,11 +94,15 @@ const ModalFilters = () => {
                         name="kind"
                         value="Presencial"
                         label="Presencial"
+                        onChange={e => handleCheckboxChange(e)}
+                        checked={state.search.filters.kind['Presencial']}
                     />
                     <Checkbox
                         name="kind"
                         value="EaD"
                         label="A distância"
+                        onChange={e => handleCheckboxChange(e)}
+                        checked={state.search.filters.kind['EaD']}
                     />
                 </div>
             </div>

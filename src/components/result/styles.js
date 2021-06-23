@@ -10,13 +10,18 @@ export const ResultStyles = styled.div`
     max-height: 80px;
     min-height: 80px;
 
+    @media(max-width: 575px){
+        max-height: unset;
+        min-height: unset;
+    }
+
     div.checkbox{
         margin-right: 32px;
         flex-grow: 0;
         flex-basis: auto;
 
         @media(max-width: 575px){
-            margin-right: 28px;
+            margin-right: 15px;
         }
     }
 
@@ -33,10 +38,12 @@ export const ResultStyles = styled.div`
         }
 
         img{
-            /* height: 60px; */
-            /* width: 100%; */
             max-width: 106px;
             max-height: 60px;
+
+            @media(max-width: 575px){
+                max-width: 80px;
+            }
         }
     }
 

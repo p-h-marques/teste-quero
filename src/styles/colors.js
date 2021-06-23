@@ -8,6 +8,8 @@ const colors = {
     grayPrimary: '#FBFBFB',
     graySecondary: '#EDEFEF',
     grayOutline: '#CBCDCE',
+    grayBackground: '#CACCCE',
+    grayColor: '#81898A',
     overlay: 'rgba(31, 45, 48, 0.88)'
 }
 

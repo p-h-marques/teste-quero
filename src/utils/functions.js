@@ -27,7 +27,9 @@ export function filterCoursesList(data) {
 export function filterRangeValues(data){
     let values = []
 
-    data.forEach(course => values.push(course.price_with_discount))
+    data.forEach(course => {
+        values.push(course.price_with_discount)
+    })
 
     return {
         min: Math.floor(Math.min( ...values )),

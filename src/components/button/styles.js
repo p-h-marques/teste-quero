@@ -35,4 +35,11 @@ export const ButtonStyles = styled.button`
         }
     }
 
+    &.disabled{
+        color: ${colors.grayColor};
+        border-color: ${colors.grayColor};
+        background-color: ${colors.grayBackground};
+        cursor: unset;
+    }
+
 `
