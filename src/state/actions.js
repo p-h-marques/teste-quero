@@ -79,12 +79,15 @@ export function applyFilters(selected, actual, all){
     }
 }
 
-export function removeCourse(id, selected){
-    const index = selected.indexOf(id)
-    if(index > -1) selected.splice(index, 1)
+export function removeCourse(course, all){
+    all.forEach((prevCourse, index) => {
+        if(JSON.stringify(prevCourse) === JSON.stringify(course)){
+            all.splice(index, 1)
+        }
+    })
 
     return {
         type: types.REMOVE_COURSE,
-        payload: selected
+        payload: all
     }
 }

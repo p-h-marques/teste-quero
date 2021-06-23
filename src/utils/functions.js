@@ -9,6 +9,10 @@ export async function getData() {
 
     const response = await request.json()
 
+    response.sort(function(a, b) {
+        return a.university.name > b.university.name ? 1 : -1
+    })
+
     return response
 }
 
@@ -74,7 +78,6 @@ export function getCourseId(course){
 }
 
 export function getSelectedCourses(data, all){
-    console.log(data, all)
     let payload = []
 
     data.forEach(mycourse => {

@@ -67,7 +67,6 @@ export const ModalStyles = styled.aside`
 
                     div + div{
                         color: ${colors.bluePrimary};
-                        cursor: pointer;
 
                         svg{
                             margin-left: 9px;

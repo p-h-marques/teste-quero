@@ -3,8 +3,7 @@ import { CardCourseStyles } from './styles'
 import ReactStars from 'react-rating-stars-component'
 
 import Context from '../../state/Context'
-// import * as actions from '../../state/actions'
-// import { getCourseId } from '../../utils/functions'
+import * as actions from '../../state/actions'
 
 import Button from '../button'
 
@@ -12,9 +11,7 @@ const CardCourse = data => {
     const { state, dispatch } = useContext(Context)
 
     const handleRemoveCourse = useCallback((data) => {
-        console.log(data)
-        // const id = getCourseId(data)
-        // dispatch(actions.removeCourse(id, state.search.selected))
+        dispatch(actions.removeCourse(data, state.main.courses))
     }, [state, dispatch])
 
     return (

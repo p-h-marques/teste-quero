@@ -46,10 +46,6 @@ const ModalFilters = () => {
         [state, dispatch],
     )
 
-    useEffect(()=>{
-        console.log(state)
-    }, [state])
-
     return (
         <ModalFiltersStyles>
             <Select
