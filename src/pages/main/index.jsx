@@ -34,7 +34,6 @@ const Main = () => {
      */
     useEffect(()=>{
         localStorage.setItem(STORAGE, JSON.stringify(state.main.courses))
-        console.log(state.main.courses)
     }, [state.main.courses])
 
     /**

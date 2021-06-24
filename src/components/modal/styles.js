@@ -8,32 +8,36 @@ export const ModalStyles = styled.aside`
     left: 0px;
     background-color: ${colors.overlay};
     width: 100%;
+    min-width: 360px;
     height: 100vh;
     display: ${props => (props.visible ? 'flex' : 'none')};
     align-items: center;
     justify-content: center;
     padding: 184px 0px;
 
+    div.exit {
+        position: absolute;
+        top: -30px;
+        right: 0px;
+        color: white;
+        cursor: pointer;
+    }
+
     div.overflow{
-        overflow-y: auto;
-        max-height: calc(100vh - 100px);
+        position: relative;
+        max-height: calc(100vh - 200px);
         max-width: 100vw;
         width: 750px;
     }
 
     div.container {
-        margin-top: 30px;
         background-color: white;
         position: relative;
         padding: 46px 40px 40px 40px;
-
-        div.exit {
-            position: absolute;
-            top: -30px;
-            right: 0px;
-            color: white;
-            cursor: pointer;
-        }
+        overflow-y: auto;
+        max-height: calc(100vh - 200px);
+        max-width: 100vw;
+        min-width: 360px;
 
         div.header {
             h1 {

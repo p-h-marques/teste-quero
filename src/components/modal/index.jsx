@@ -61,14 +61,14 @@ const Modal = () => {
             data-test="modal"
         >
             <div id={OVERLAY} className="overflow">
+                <div className="exit" data-test="modal-close">
+                    <FontAwesomeIcon
+                        icon={faTimes}
+                        style={{ width: '26px', height: '26px' }}
+                        onClick={handleModalShow}
+                    />
+                </div>
                 <div className="container">
-                    <div className="exit" data-test="modal-close">
-                        <FontAwesomeIcon
-                            icon={faTimes}
-                            style={{ width: '26px', height: '26px' }}
-                            onClick={handleModalShow}
-                        />
-                    </div>
 
                     <div className="header">
                         <h1 data-test="modal-title">Adicionar bolsa</h1>

@@ -30,6 +30,7 @@ export const ResultStyles = styled.div`
         margin-right: 33px;
         flex-grow: 0;
         flex-basis: auto;
+        flex-shrink: 0;
 
         @media(max-width: 575px){
             width: 80px;
@@ -51,16 +52,18 @@ export const ResultStyles = styled.div`
         align-items: center;
         flex-grow: 1;
         flex-basis: auto;
-        flex-wrap: wrap;
+        flex-wrap: no-wrap;
 
         @media(max-width: 575px){
             flex-direction: column;
             align-items: flex-start;
+            flex-wrap: wrap;
         }
 
         div.infos{
             flex-grow: 1;
             flex-basis: auto;
+            flex-shrink: 1;
 
             @media(max-width: 575px){
                 margin-bottom: 28px;
@@ -87,6 +90,7 @@ export const ResultStyles = styled.div`
             text-align: right;
             flex-grow: 0;
             flex-basis: auto;
+            flex-shrink: 0;
 
             @media(max-width: 575px){
                 text-align: left;
