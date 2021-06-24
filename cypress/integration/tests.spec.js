@@ -2,7 +2,11 @@
 
 const domain = 'http://localhost:3000'
 // const domain = 'https://querobolsa-fc7b9.web.app'
+
+const storageData = '[{"full_price":932.58,"price_with_discount":606.18,"discount_percentage":35,"start_date":"01/08/2019","enrollment_semester":"2019.2","enabled":true,"course":{"name":"Educação Física","kind":"Presencial","level":"Bacharelado","shift":"Noite"},"university":{"name":"ETEP","score":3.2,"logo_url":"https://www.tryimg.com/u/2019/04/16/etep.png"},"campus":{"name":"Jardim Esplanada","city":"São José dos Campos"}},{"full_price":1227.05,"price_with_discount":515.36,"discount_percentage":58,"start_date":"01/08/2019","enrollment_semester":"2019.2","enabled":true,"course":{"name":"Jornalismo","kind":"Presencial","level":"Bacharelado","shift":"Noite"},"university":{"name":"UNIP","score":4.5,"logo_url":"https://www.tryimg.com/u/2019/04/16/unip.png"},"campus":{"name":"Água Branca","city":"São Paulo"}}]'
+
 import l from '../support/locators'
+import {STORAGE} from '../../src/state/Provider'
 
 describe('testes funcionais', () => {
     before(() => {
@@ -124,5 +128,11 @@ describe('testes funcionais', () => {
 
         cy.get(l.main.cardCourse).get('div.actions button')
             .eq(1).should('contain.html', 'Indisponível')
+    })
+
+    it('certificando leitura de storage', ()=>{
+        cy.window().its('localStorage').invoke('setItem', STORAGE, storageData)
+        cy.visit(domain)
+        cy.get(l.main.cardCourse).its('length').should('eq', 2)
     })
 })

@@ -14,6 +14,8 @@ import CardCourse from '../../components/cardCourse'
 import Footer from '../../components/footer'
 import Modal from '../../components/modal'
 
+import { STORAGE } from '../../state/Provider'
+
 const Main = () => {
     const { state, dispatch } = useContext(Context)
 
@@ -26,6 +28,14 @@ const Main = () => {
     }, [])
 
     // useEffect(() => [console.log(state)], [state])
+
+    /**
+     * Salvando cursos da página principal no localStorage
+     */
+    useEffect(()=>{
+        localStorage.setItem(STORAGE, JSON.stringify(state.main.courses))
+        console.log(state.main.courses)
+    }, [state.main.courses])
 
     /**
      * Corpo da página
