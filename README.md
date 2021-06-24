@@ -18,6 +18,18 @@ Pra poder clonar e rodar o projeto direitinho, é só mandar aqueles comandos pa
 npm i && npm start
 ```
 
+Caso você tenha problemas com as quebras de linha do Windows, o comando abaixo corrige automaticamente os arquivos usando o Eslint:
+
+```bash
+npm run lint
+```
+
+E claro, pra executar os testes no Cypress, você pode usar esse comando:
+
+```bash
+npm run test
+```
+
 ## Features
 
 Entre features propostas de forma obrigatória & opcional pela especificação, o seguinte foi viabilizado:
