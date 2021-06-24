@@ -3,11 +3,17 @@ import colors from '../../styles/colors'
 import measures from '../../styles/measures'
 
 export const MainStyles = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
     main{
         margin-top: 36px;
         margin-bottom: 120px;
         color: ${colors.black};
         padding: 0px ${measures.paddingDesktop};
+        flex-grow: 1;
+        flex-basis: 0;
 
         @media(max-width:1199px){
             padding: 0px ${measures.paddingMobile};

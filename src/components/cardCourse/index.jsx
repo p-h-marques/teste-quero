@@ -59,14 +59,30 @@ const CardCourse = data => {
                 </div>
             </div>
 
-            <div className="price">
-                <div className="label">Mensalidade com o Quero Bolsa:</div>
-                <div className="fullprice">R$ {formatingMoney(data.full_price)}</div>
-                <div className="discountprice">
-                    <span className="value">R$ {formatingMoney(data.price_with_discount)}</span>
-                    <span className="period">/mês</span>
-                </div>
-            </div>
+            {
+                data.enabled && (
+                    <div className="price">
+                        <div className="label">Mensalidade com o Quero Bolsa:</div>
+                        <div className="fullprice">R$ {formatingMoney(data.full_price)}</div>
+                        <div className="discountprice">
+                            <span className="value">R$ {formatingMoney(data.price_with_discount)}</span>
+                            <span className="period">/mês</span>
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                !data.enabled && (
+                    <div className="disabled">
+                        <div className="status">Bolsa indisponível.</div>
+                        <div className="fullprice">
+                            Entre em contato com nosso atendimento para saber mais.
+                        </div>
+                    </div>
+                )
+            }
+
 
             <div className="actions">
                 <Button

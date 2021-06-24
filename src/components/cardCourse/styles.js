@@ -16,6 +16,8 @@ export const CardCourseStyles = styled.div`
         margin-bottom: 21px;
         border-bottom: 2px solid ${colors.graySecondary};
         align-self: stretch;
+        flex-grow: 0;
+        flex-basis: 0;
 
         div.img{
             height: 70px;
@@ -64,6 +66,8 @@ export const CardCourseStyles = styled.div`
         margin-bottom: 21px;
         border-bottom: 2px solid ${colors.graySecondary};
         align-self: stretch;
+        flex-grow: 0;
+        flex-basis: 0;
 
         div.shift{
             letter-spacing: 0.1em;
@@ -73,6 +77,9 @@ export const CardCourseStyles = styled.div`
     }
 
     div.price{
+        flex-grow: 1;
+        flex-basis: 0;
+
         div.label{
             font-size: 13px;
             line-height: 13px;
@@ -105,7 +112,29 @@ export const CardCourseStyles = styled.div`
         }
     }
 
+    div.disabled{
+        flex-grow: 1;
+        flex-basis: 0;
+
+        div.status{
+            font-size: 13px;
+            line-height: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        div.fullprice{
+            font-size: 13px;
+            line-height: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    }
+
     div.actions{
+        flex-grow: 0;
+        flex-basis: 0;
+
         button + button {
             margin-left: 8px;
         }
