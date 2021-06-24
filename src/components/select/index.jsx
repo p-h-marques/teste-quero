@@ -1,12 +1,12 @@
 import React from 'react'
 import { SelectStyles } from './styles'
 
-const Modal = ({options, label, name, id, onChange}) => {
+const Modal = ({options, label, name, id, onChange, test, value}) => {
     return (
         <SelectStyles>
             <label htmlFor={name}>{label}</label>
 
-            <select name={name} id={id} onChange={onChange}>
+            <select name={name} id={id} onChange={onChange} data-test={test} value={value}>
 
                 <option value="">Selecione...</option>
 

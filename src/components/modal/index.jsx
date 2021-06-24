@@ -56,10 +56,11 @@ const Modal = () => {
         <ModalStyles
             visible={state.search.visible}
             onClick={e => handleOutsideClick(e)}
+            data-test="modal"
         >
             <div id={OVERLAY} className="overflow">
                 <div className="container">
-                    <div className="exit">
+                    <div className="exit" data-test="modal-close">
                         <FontAwesomeIcon
                             icon={faTimes}
                             style={{ width: '26px', height: '26px' }}
@@ -68,7 +69,7 @@ const Modal = () => {
                     </div>
 
                     <div className="header">
-                        <h1>Adicionar bolsa</h1>
+                        <h1 data-test="modal-title">Adicionar bolsa</h1>
                         <p>Filtre e adicione as bolsas de seu interesse. </p>
                     </div>
 

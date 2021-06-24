@@ -25,6 +25,7 @@ const ModalActions = () => {
                     label="Cancelar"
                     padding="big"
                     onClick={handleCancelClick}
+                    test="button-cancel"
                 />
             </div>
             <div>
@@ -34,6 +35,7 @@ const ModalActions = () => {
                     padding="big"
                     disabled={state.search.selected.length === 0}
                     onClick={handleApplyClick}
+                    test="button-apply"
                 />
             </div>
         </ModalActionsStyles>

@@ -3,7 +3,7 @@ import { MainStyles } from './styles'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
-import { getData } from '../../utils/functions'
+import { getData, getCourseId } from '../../utils/functions'
 
 import Header from '../../components/header'
 import Navbar from '../../components/navbar'
@@ -22,7 +22,7 @@ const Main = () => {
         dispatch(actions.fetchData(data))
     }, [])
 
-    useEffect(() => [console.log(state.main.filter)], [state])
+    // useEffect(() => [console.log(state)], [state])
 
     return (
         <MainStyles>
@@ -41,7 +41,7 @@ const Main = () => {
 
                 <div className="cards">
                     <CardAdd />
-                    {state.main.courses.map((course, key) => {
+                    {state.main.courses.map((course) => {
                         if (
                             (
                                 state.main.filter !== 'all' &&
@@ -49,7 +49,7 @@ const Main = () => {
                             ) ||
                             state.main.filter === 'all'
                         ) {
-                            return <CardCourse {...course} key={key} />
+                            return <CardCourse {...course} key={getCourseId(course)} />
                         }
                     })}
                 </div>

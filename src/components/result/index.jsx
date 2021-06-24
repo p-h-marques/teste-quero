@@ -35,6 +35,7 @@ const Result = ({ data, id }) => {
                         handleCourseSelect(e, id)
                     }}
                     checked={state.search.selected.includes(id)}
+                    data-test="result-check"
                 />
             </div>
             <div className="logo">

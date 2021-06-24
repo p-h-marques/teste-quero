@@ -57,6 +57,7 @@ const ModalFilters = () => {
                 ]}
                 label="SELECIONE SUA CIDADE"
                 name="city"
+                test="select-city"
                 id="selectCity"
                 onChange={e =>
                     dispatch(
@@ -66,12 +67,14 @@ const ModalFilters = () => {
                         }),
                     )
                 }
+                value={state.search.filters.city}
             />
 
             <Select
                 options={courses}
                 label="SELECIONE O CURSO DE SUA PREFERÊNCIA"
                 name="course"
+                test="select-course"
                 id="selectCourse"
                 onChange={e =>
                     dispatch(
@@ -81,6 +84,7 @@ const ModalFilters = () => {
                         }),
                     )
                 }
+                value={state.search.filters.course}
             />
 
             <div className="options">
@@ -89,6 +93,7 @@ const ModalFilters = () => {
                     <Checkbox
                         name="kind"
                         value="Presencial"
+                        data-test="check-presencial"
                         label="Presencial"
                         onChange={e => handleCheckboxChange(e)}
                         checked={state.search.filters.kind['Presencial']}
@@ -96,6 +101,7 @@ const ModalFilters = () => {
                     <Checkbox
                         name="kind"
                         value="EaD"
+                        data-test="check-ead"
                         label="A distância"
                         onChange={e => handleCheckboxChange(e)}
                         checked={state.search.filters.kind['EaD']}
@@ -116,6 +122,7 @@ const ModalFilters = () => {
                     max={range.max}
                     step={1}
                     value={actualRange}
+                    data-test="range-value"
                     onChange={e => {
                         setActualRange(parseInt(e.target.value))
                     }}

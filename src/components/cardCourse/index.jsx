@@ -16,7 +16,9 @@ const CardCourse = data => {
     }, [state, dispatch])
 
     return (
-        <CardCourseStyles>
+        <CardCourseStyles
+            data-test="card-course"
+        >
             <div className="infos">
                 <div className="img">
                     <img
@@ -65,6 +67,7 @@ const CardCourse = data => {
                     className="secondary"
                     label="Excluir"
                     onClick={() => handleRemoveCourse(data)}
+                    test="course-remove"
                 />
                 <Button className="primary" label="Ver oferta" />
             </div>

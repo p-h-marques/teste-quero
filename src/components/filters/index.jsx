@@ -36,6 +36,7 @@ const Breadcrumbs = () => {
                         }
                         key={filter.code}
                         onClick={()=>{handleSemesterChange(filter.code)}}
+                        data-test={`main-filter-${filter.code.replace('.','-')}`}
                     >
                         {filter.label}
                     </div>

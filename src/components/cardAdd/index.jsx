@@ -15,7 +15,7 @@ const CardAdd = () => {
     }, [state, dispatch])
 
     return (
-        <CardAddStyles onClick={handleModalShow}>
+        <CardAddStyles onClick={handleModalShow} data-test="card-add">
             <FontAwesomeIcon icon={faPlus} style={{width: '64px', height: '64px'}}/>
             <h2>Adicionar curso</h2>
             <p>Clique para adicionar bolsas de cursos do seu interesse</p>

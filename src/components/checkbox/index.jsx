@@ -9,7 +9,7 @@ const Checkbox = (props) => {
                 <input
                     type="checkbox"
                     {...props}
-                    id={props.value}
+                    id={props.value.toLowerCase().replaceAll(' ','')}
                 />
                 <label htmlFor={props.value}>{props.label}</label>
             </>
