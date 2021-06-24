@@ -77,7 +77,7 @@ const CardCourse = data => {
                 />
                 <Button
                     className={data.enabled ? 'primary' : 'disabled'}
-                    label="Indisponível"
+                    label={data.enabled ? 'Ver oferta' : 'Indisponível'}
                     disabled={!data.enabled}
                 />
             </div>
