@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
-const domain = 'http://localhost:3000'
+// const domain = 'http://localhost:3000'
+const domain = 'https://querobolsa-fc7b9.web.app'
 import l from '../support/locators'
 
 describe('testes funcionais', () => {
