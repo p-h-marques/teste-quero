@@ -126,7 +126,7 @@ export const CardCourseStyles = styled.div`
         div.fullprice{
             font-size: 13px;
             line-height: 20px;
-            font-weight: bold;
+            font-weight: regular;
             margin-bottom: 20px;
         }
     }
