@@ -36,7 +36,7 @@ export function toogleSemester(semester){
 export function updateRange(max){
     return {
         type: types.UPDATE_RANGE,
-        payload: parseInt(max),
+        payload: parseInt(max, 10),
     }
 }
 

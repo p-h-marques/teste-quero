@@ -8,14 +8,12 @@ const Checkbox = (props) => {
      */
     return (
         <CheckboxStyles>
-            <>
-                <input
-                    type="checkbox"
-                    {...props}
-                    id={props.value.toLowerCase().replaceAll(' ','')}
-                />
-                <label htmlFor={props.value}>{props.label}</label>
-            </>
+            <input
+                type="checkbox"
+                {...props}
+                id={props.value.toLowerCase().replaceAll(' ','')}
+            />
+            <label htmlFor={props.value}>{props.label}</label>
         </CheckboxStyles>
     )
 }

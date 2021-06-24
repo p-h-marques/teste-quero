@@ -66,6 +66,8 @@ const Main = () => {
                         ) {
                             return <CardCourse {...course} key={getCourseId(course)} />
                         }
+
+                        return null
                     })}
                 </div>
             </main>

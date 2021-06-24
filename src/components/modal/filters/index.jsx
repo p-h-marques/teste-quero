@@ -129,7 +129,7 @@ const ModalFilters = () => {
                     value={actualRange}
                     data-test="range-value"
                     onChange={e => {
-                        setActualRange(parseInt(e.target.value))
+                        setActualRange(parseInt(e.target.value, 10))
                     }}
                     onMouseUp={e => {
                         handleRangeChange(e)
