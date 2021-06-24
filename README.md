@@ -1,6 +1,6 @@
 # Quero Bolsa - Processo Seletivo
 
-Olá! Aqui é o Pedro, e esse repositório contém o desenvolvimento da tela de visualização, busca & seleção de cursos propostas pelo processo. Além do próprio React, utilizei algumas paradas bem legais:
+Olá! Aqui é o Pedro, e esse repositório contém o desenvolvimento da tela de visualização, busca & seleção de cursos proposta pelo processo. Além do próprio React, utilizei algumas paradas bem legais:
 
 - **styled components** para deixar os estilos mais organizados;
 - **react hooks** como o useState, useEffect e useCallback;
@@ -30,11 +30,3 @@ Entre features propostas de forma obrigatória & opcional pela especificação, 
 - as ordenações por Nome da Faculdade foram respeitadas;
 - os cursos selecionados persistem no Local Storage do usuário, persistindo durante os recarregamentos;
 - o Cypress foi utilizado para viabilizar os testes funcionais da aplicação, verificando os principais casos de uso.
-
-# Estado global
-
-# Estrutura de pastas
-
-# Testes funcionais
-
-# Observações
