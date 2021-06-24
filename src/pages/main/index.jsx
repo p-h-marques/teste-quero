@@ -17,6 +17,9 @@ import Modal from '../../components/modal'
 const Main = () => {
     const { state, dispatch } = useContext(Context)
 
+    /**
+     * Requisição inicial para consultar API de cursos
+     */
     useEffect(async () => {
         const data = await getData()
         dispatch(actions.fetchData(data))
@@ -24,6 +27,9 @@ const Main = () => {
 
     // useEffect(() => [console.log(state)], [state])
 
+    /**
+     * Corpo da página
+     */
     return (
         <MainStyles>
             <Header />

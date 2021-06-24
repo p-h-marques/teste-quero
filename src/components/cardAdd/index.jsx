@@ -10,10 +10,17 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 const CardAdd = () => {
     const { state, dispatch } = useContext(Context)
 
+    /**
+     * Exibe o modal com os filtros e cursos
+     * a serem adicionados
+     */
     const handleModalShow = useCallback(()=>{
         dispatch(actions.toogleModal(true))
     }, [state, dispatch])
 
+    /**
+     * Corpo do componente
+     */
     return (
         <CardAddStyles onClick={handleModalShow} data-test="card-add">
             <FontAwesomeIcon icon={faPlus} style={{width: '64px', height: '64px'}}/>

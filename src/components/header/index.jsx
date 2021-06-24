@@ -7,6 +7,10 @@ import { faInfoCircle, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 const Header = () => {
+
+    /**
+     * Corpo do componente
+     */
     return (
         <HeaderStyles>
             <div className="infos">

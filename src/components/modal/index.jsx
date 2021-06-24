@@ -3,7 +3,7 @@ import { ModalStyles } from './styles'
 
 import Context from '../../state/Context'
 import * as actions from '../../state/actions'
-import { filterCourses, getCourseId, getSelectedCourses } from '../../utils/functions'
+import { filterCourses, getCourseId, verifySelectedFiltered } from '../../utils/functions'
 
 import ModalFilters from './filters'
 import ModalActions from './actions'
@@ -14,14 +14,31 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = () => {
     const OVERLAY = 'overlay'
-
-    const [filteredCourses, setFilteredCourses] = useState([])
     const { state, dispatch } = useContext(Context)
 
+    /**
+     * Lista de cursos filtrados sendo exibidos no modal
+     */
+    const [filteredCourses, setFilteredCourses] = useState([])
+
+    useEffect(() => {
+        setFilteredCourses(filterCourses(state.data, state.search.filters))
+
+        const newSelected = verifySelectedFiltered(state.search, state.data)
+
+        dispatch(actions.updateSelectedCourses(newSelected))
+    }, [state.search.filters, state.data])
+
+    /**
+     * Ocultando modal de detalhes no clique no X
+     */
     const handleModalShow = useCallback(() => {
         dispatch(actions.toogleModal(false))
     }, [state, dispatch])
 
+    /**
+     * Ocultando modal no clique fora dele
+     */
     const handleOutsideClick = useCallback(
         e => {
             const collection = e.target.children
@@ -33,25 +50,9 @@ const Modal = () => {
         [state, dispatch],
     )
 
-    useEffect(() => {
-        setFilteredCourses(filterCourses(state.data, state.search.filters))
-
-        verifySelectedFiltered(state.search, state.data)
-
-        function verifySelectedFiltered({selected, filters}, data){
-            const coursesSelected = getSelectedCourses(selected, data)
-            const filteredCoursesSelected = filterCourses(coursesSelected, filters)
-
-            let newSelected = []
-
-            filteredCoursesSelected.forEach(courseFiltered => {
-                newSelected.push(getCourseId(courseFiltered))
-            })
-
-            dispatch(actions.updateSelectedCourses(newSelected))
-        }
-    }, [state.search.filters, state.data])
-
+    /**
+     * Corpo do componente
+     */
     return (
         <ModalStyles
             visible={state.search.visible}

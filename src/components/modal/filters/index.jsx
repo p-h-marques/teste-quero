@@ -9,10 +9,15 @@ import Select from '../../select'
 import Checkbox from '../../checkbox'
 
 const ModalFilters = () => {
-    const [courses, setCourses] = useState([])
-    const [range, setRange]     = useState({min: 0, max: 10000})
-    const [actualRange, setActualRange] = useState(10000)
     const { state, dispatch }   = useContext(Context)
+
+    /**
+     * Modificando opções dos filtros de acordo
+     * com os dados provenientes da API
+     */
+    const [courses, setCourses]         = useState([])
+    const [range, setRange]             = useState({min: 0, max: 10000})
+    const [actualRange, setActualRange] = useState(10000)
 
     useEffect(() => {
         const filteredCoursesList = filterCoursesList(state.data)
@@ -27,6 +32,9 @@ const ModalFilters = () => {
         }
     }, [state.data])
 
+    /**
+     * Atualizando filtro de range de valores
+     */
     const handleRangeChange = useCallback(
         e => {
             dispatch(actions.updateRange(e.target.value))
@@ -34,6 +42,9 @@ const ModalFilters = () => {
         [state, dispatch]
     )
 
+    /**
+     * Atualizando filtro de modalidade de curso
+     */
     const handleCheckboxChange = useCallback(
         e => {
             dispatch(
@@ -46,6 +57,9 @@ const ModalFilters = () => {
         [state, dispatch],
     )
 
+    /**
+     * Corpo do componente
+     */
     return (
         <ModalFiltersStyles>
             <Select

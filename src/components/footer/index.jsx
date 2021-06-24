@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FooterContact from '../footerContact'
 import { FooterStyles } from './styles'
 
@@ -8,7 +8,10 @@ import { faComments, faEnvelope, faHeart } from '@fortawesome/free-regular-svg-i
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
-    const contacts = [
+    /**
+     * Informações de contato
+     */
+    const [contacts] = useState([
         {
             logo: faWhatsapp,
             title: '0800 123 2222',
@@ -33,8 +36,11 @@ const Footer = () => {
             description: 'Encontre todas as respostas',
             compact: 'Ajuda',
         },
-    ]
+    ])
 
+    /**
+     * Corpo do componente
+     */
     return (
         <FooterStyles>
             <div className="contacts">

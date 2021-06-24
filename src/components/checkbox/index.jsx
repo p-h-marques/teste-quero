@@ -1,8 +1,11 @@
 import React from 'react'
 import { CheckboxStyles } from './styles'
 
-
 const Checkbox = (props) => {
+
+    /**
+     * Corpo do componente
+     */
     return (
         <CheckboxStyles>
             <>

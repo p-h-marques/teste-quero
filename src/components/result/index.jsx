@@ -10,12 +10,14 @@ import Checkbox from '../checkbox'
 const Result = ({ data, id }) => {
     const { state, dispatch } = useContext(Context)
 
+    /**
+     * Gerencia a seleção dos cursos filtrados no modal
+     */
     const handleCourseSelect = useCallback(
         (e, id) => {
-            const type = e.target.checked ? 'add' : 'remove'
             dispatch(
                 actions.updateFilterSelectedCourses({
-                    type,
+                    type: e.target.checked ? 'add' : 'remove',
                     data: id,
                     prev: state.search.selected,
                 }),
@@ -24,6 +26,9 @@ const Result = ({ data, id }) => {
         [state.search.selected, dispatch],
     )
 
+    /**
+     * Corpo do componente
+     */
     return (
         <ResultStyles>
             <div className="checkbox">

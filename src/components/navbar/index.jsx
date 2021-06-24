@@ -5,19 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
-    const links = [
-        {
-            label: 'Pré-matrículas',
-            selected: false,
-        },
-        {
-            label: 'Bolsas favoritas',
-            selected: true,
-        },
-    ]
-
     const [isMenuExpanded, setIsMenuExpanded] = useState(false)
+    const [links] = useState([
+        { label: 'Pré-matrículas', selected: false },
+        { label: 'Bolsas favoritas', selected: true },
+    ])
 
+    /**
+     * Corpo do componente
+     */
     return (
         <NavbarStyles isMenuExpanded={isMenuExpanded}>
             <div className="title">

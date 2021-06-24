@@ -7,6 +7,9 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 const Breadcrumbs = () => {
     const links = ['Home', 'Minha conta', 'Bolsas favoritas']
 
+    /**
+     * Corpo do componente
+     */
     return (
         <BreadcrumbsStyles>
             <FontAwesomeIcon icon={faChevronLeft} />

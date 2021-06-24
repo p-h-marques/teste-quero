@@ -9,14 +9,25 @@ import Button from '../../button'
 const ModalActions = () => {
     const { state, dispatch } = useContext(Context)
 
+    /**
+     * Clicando no botão de "Cancelar" no modal de filtros
+     */
     const handleCancelClick = useCallback(()=>{
         dispatch(actions.cancelFilters())
     }, [state, dispatch])
 
+    /**
+     * Clicando no botão de "Aplicar" no modal de filtros
+     */
     const handleApplyClick = useCallback(()=>{
-        dispatch(actions.applyFilters(state.search.selected, state.main.courses, state.data))
+        dispatch(actions.applyFilters(
+            state.search.selected, state.main.courses, state.data
+        ))
     }, [state, dispatch])
 
+    /**
+     * Corpo do componente
+     */
     return (
         <ModalActionsStyles>
             <div>

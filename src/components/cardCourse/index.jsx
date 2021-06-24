@@ -11,10 +11,16 @@ import Button from '../button'
 const CardCourse = data => {
     const { state, dispatch } = useContext(Context)
 
+    /**
+     * Operação do botão "Excluir" no card do curso
+     */
     const handleRemoveCourse = useCallback((data) => {
         dispatch(actions.removeCourse(data, state.main.courses))
     }, [state, dispatch])
 
+    /**
+     * Corpo do componente
+     */
     return (
         <CardCourseStyles
             data-test="card-course"

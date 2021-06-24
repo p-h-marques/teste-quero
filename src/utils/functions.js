@@ -108,3 +108,16 @@ export function formatingMoney(enter) {
 
     return newvalue
 }
+
+export function verifySelectedFiltered({selected, filters}, data){
+    const coursesSelected = getSelectedCourses(selected, data)
+    const filteredCoursesSelected = filterCourses(coursesSelected, filters)
+
+    let newSelected = []
+
+    filteredCoursesSelected.forEach(courseFiltered => {
+        newSelected.push(getCourseId(courseFiltered))
+    })
+
+    return newSelected
+}
