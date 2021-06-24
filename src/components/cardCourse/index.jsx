@@ -75,7 +75,11 @@ const CardCourse = data => {
                     onClick={() => handleRemoveCourse(data)}
                     test="course-remove"
                 />
-                <Button className="primary" label="Ver oferta" />
+                <Button
+                    className={data.enabled ? 'primary' : 'disabled'}
+                    label="Indisponível"
+                    disabled={!data.enabled}
+                />
             </div>
         </CardCourseStyles>
     )

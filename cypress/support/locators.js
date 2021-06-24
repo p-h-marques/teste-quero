@@ -12,6 +12,7 @@ const locators = {
         modalTitle: '[data-test=modal-title]',
         modalClose: '[data-test=modal-close]',
         resultCheck: '[data-test=result-check]',
+        resultEmpty: '[data-test=result-empty]',
         buttonApply: '[data-test=button-apply]',
         buttonCancel: '[data-test=button-cancel]',
     },

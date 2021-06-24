@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
-// import measures from '../../styles/measures'
 
 export const ResultStyles = styled.div`
     display: flex;

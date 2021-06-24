@@ -8,6 +8,7 @@ import { filterCourses, getCourseId, verifySelectedFiltered } from '../../utils/
 import ModalFilters from './filters'
 import ModalActions from './actions'
 import Result from '../result'
+import ResultEmpty from '../resultEmpty'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -97,6 +98,12 @@ const Modal = () => {
                                     />
                                 )
                             })}
+
+                            {
+                                filteredCourses.length === 0 && (
+                                    <ResultEmpty />
+                                )
+                            }
                         </div>
                     </div>
 

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-// const domain = 'http://localhost:3000'
-const domain = 'https://querobolsa-fc7b9.web.app'
+const domain = 'http://localhost:3000'
+// const domain = 'https://querobolsa-fc7b9.web.app'
 import l from '../support/locators'
 
 describe('testes funcionais', () => {
@@ -93,5 +93,36 @@ describe('testes funcionais', () => {
         }
 
         cy.get(l.main.cardCourse).its('length').should('eq', 1)
+    })
+
+    it('exibindo e ocultando componente de resultado vazio na filtragem', ()=>{
+        cy.get(l.main.cardAdd).click()
+        cy.get(l.filters.range).invoke('val', 0).trigger('change').click()
+
+        cy.get(l.modal.resultEmpty).should('be.visible')
+            .should('contain', 'A pesquisa atual não retorna nenhum resultado :(')
+
+        cy.get(l.filters.range).invoke('val', 2000).trigger('change').click()
+
+        cy.get(l.modal.resultEmpty).should('not.exist')
+        cy.get(l.modal.modalClose).click()
+        cy.get(l.main.removeCourse).click()
+    })
+
+    it('certificando que cursos indisponíveis serão evidenciados como tal', ()=>{
+        cy.get(l.main.cardAdd).click()
+        cy.get(l.filters.course).select('Gastronomia')
+        cy.get(l.modal.resultCheck).click()
+        cy.get(l.modal.buttonApply).click()
+
+        cy.get(l.main.cardCourse).get('div.infos div.course')
+            .should('contain', 'Gastronomia')
+
+        cy.get(l.main.cardCourse).get('div.actions button')
+            .should('have.class', 'disabled')
+            .should('be.disabled')
+
+        cy.get(l.main.cardCourse).get('div.actions button')
+            .eq(1).should('contain.html', 'Indisponível')
     })
 })
