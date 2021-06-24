@@ -1,3 +1,8 @@
+/**
+ * Requisição para obter cursos
+ *
+ * @returns {array} Cursos do arquivo .json
+ */
 export async function getData() {
     const request = await fetch('db.json', {
         method: 'GET',
@@ -16,6 +21,13 @@ export async function getData() {
     return response
 }
 
+/**
+ * Obtém lista dos nomes dos cursos
+ * para preencher o select do filtro
+ *
+ * @param {array} data Cursos disponíveis na tela
+ * @returns {array} Nomes dos cursos
+ */
 export function filterCoursesList(data) {
     let courses = []
 
@@ -28,6 +40,13 @@ export function filterCoursesList(data) {
     return courses.sort()
 }
 
+/**
+ * Obtém maior e menor valor dos cursos disponíveis,
+ * para definir limites do range de valores do filtro
+ *
+ * @param {array} data Cursos disponíveis em tela
+ * @returns {object} Valor máximo e mínimo
+ */
 export function filterRangeValues(data){
     let values = []
 
@@ -41,6 +60,13 @@ export function filterRangeValues(data){
     }
 }
 
+/**
+ * Filtra cursos de acordo com os filtros definidos
+ *
+ * @param {array} data Cursos disponíveis em tela
+ * @param {object} filters Objeto com filtros
+ * @returns {array} Cursos pós filtragem
+ */
 export function filterCourses(data, filters) {
     let finalData = data
 
@@ -69,6 +95,13 @@ export function filterCourses(data, filters) {
     return finalData
 }
 
+/**
+ * Fabrica ID do curso, concatenando nome do curso,
+ * nome da universidade e modalidade
+ *
+ * @param {object} course Informações do curso
+ * @returns {string} ID fabricado
+ */
 export function getCourseId(course){
     return course.course.name +
         ' | ' +
@@ -77,6 +110,14 @@ export function getCourseId(course){
         course.course.kind
 }
 
+/**
+ * Procura IDs dos cursos selecionados
+ * na lista de cursos disponíveis
+ *
+ * @param {array} data Array com IDs de cursos selecionados
+ * @param {array} all Cursos disponíveis em tela
+ * @returns {array} Cursos a serem inseridos na página principal
+ */
 export function getSelectedCourses(data, all){
     let payload = []
 
@@ -94,6 +135,12 @@ export function getSelectedCourses(data, all){
     return payload
 }
 
+/**
+ * Converte valor numérico para string monetária
+ *
+ * @param {float} enter Valor monetário
+ * @returns {string} Valor no formato 9.999,99
+ */
 export function formatingMoney(enter) {
     let value = parseFloat(enter)
 
@@ -109,6 +156,15 @@ export function formatingMoney(enter) {
     return newvalue
 }
 
+/**
+ * Verifica, após atualização dos parâmetros de filtragem,
+ * se os cursos selecionados previamente ainda
+ * estão contemplados pelos novos filtros
+ *
+ * @param {object} param0 Parâmetros de pesquisa do estado global
+ * @param {*} data Cursos disponíveis em tela
+ * @returns Cursos selecionados pós verificação
+ */
 export function verifySelectedFiltered({selected, filters}, data){
     const coursesSelected = getSelectedCourses(selected, data)
     const filteredCoursesSelected = filterCourses(coursesSelected, filters)

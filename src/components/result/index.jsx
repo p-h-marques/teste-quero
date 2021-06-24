@@ -15,13 +15,11 @@ const Result = ({ data, id }) => {
      */
     const handleCourseSelect = useCallback(
         (e, id) => {
-            dispatch(
-                actions.updateFilterSelectedCourses({
-                    type: e.target.checked ? 'add' : 'remove',
-                    data: id,
-                    prev: state.search.selected,
-                }),
-            )
+            dispatch(actions.updateFilterSelectedCourses(
+                e.target.checked ? 'add' : 'remove',
+                id,
+                state.search.selected
+            ))
         },
         [state.search.selected, dispatch],
     )

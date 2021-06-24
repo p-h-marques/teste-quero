@@ -48,10 +48,7 @@ const ModalFilters = () => {
     const handleCheckboxChange = useCallback(
         e => {
             dispatch(
-                actions.updateKind({
-                    type: e.target.value,
-                    status: e.target.checked,
-                }),
+                actions.updateKind(e.target.value, e.target.checked),
             )
         },
         [state, dispatch],
@@ -75,10 +72,7 @@ const ModalFilters = () => {
                 id="selectCity"
                 onChange={e =>
                     dispatch(
-                        actions.updateSelect({
-                            type: 'city',
-                            data: e.target.value,
-                        }),
+                        actions.updateSelect('city', e.target.value)
                     )
                 }
                 value={state.search.filters.city}
@@ -92,10 +86,7 @@ const ModalFilters = () => {
                 id="selectCourse"
                 onChange={e =>
                     dispatch(
-                        actions.updateSelect({
-                            type: 'course',
-                            data: e.target.value,
-                        }),
+                        actions.updateSelect('course', e.target.value)
                     )
                 }
                 value={state.search.filters.course}
